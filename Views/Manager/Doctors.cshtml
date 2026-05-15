@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Manage Doctors";
+    ViewData["Active"] = "Doctors";
+    Layout = "~/Views/Manager/_ManagerLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-gold d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-user-md me-2"></i>Manage Doctors</span>
+        <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addDoctorModal">
+            <i class="fas fa-plus me-1"></i>Add Doctor
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-4"><input type="text" class="form-control" placeholder="Search doctors..." /></div>
+        </div>
+        <table class="table table-hover">
+            <thead><tr><th>Name</th><th>Surname</th><th>HPCSA Number</th><th>Email</th><th>Contact</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+                <tr><td>James</td><td>Peterson</td><td>MP0123456</td><td>j.peterson@clinic.co.za</td><td>082 111 2222</td><td><span class="badge bg-success">Active</span></td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-warning me-1"><i class="fas fa-key"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-ban"></i></button></td></tr>
+                <tr><td>Amahle</td><td>Dlamini</td><td>MP0234567</td><td>a.dlamini@hospital.co.za</td><td>083 222 3333</td><td><span class="badge bg-success">Active</span></td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-warning me-1"><i class="fas fa-key"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-ban"></i></button></td></tr>
+                <tr><td>Pieter</td><td>van Zyl</td><td>MP0345678</td><td>p.vanzyl@medpractice.co.za</td><td>084 333 4444</td><td><span class="badge bg-secondary">Inactive</span></td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-warning me-1"><i class="fas fa-key"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-ban"></i></button></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="addDoctorModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#F5A800;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add Doctor</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="First name" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Surname <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Last name" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">HPCSA Number <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="e.g. MP0123456" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Contact Number</label>
+                        <input type="text" class="form-control" placeholder="e.g. 082 000 0000" />
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" placeholder="Email (used as username)" />
+                    </div>
+                    <div class="col-12">
+                        <div class="alert alert-info py-2 mb-0" style="font-size:0.85rem;">
+                            <i class="fas fa-info-circle me-1"></i>
+                            A password will be auto-generated and emailed to the doctor upon creation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-gold">Create Doctor Account</button>
+            </div>
+        </div>
+    </div>
+</div>

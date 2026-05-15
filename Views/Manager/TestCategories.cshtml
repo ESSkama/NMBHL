@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Test Categories";
+    ViewData["Active"] = "TestCategories";
+    Layout = "~/Views/Manager/_ManagerLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-gold d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-tags me-2"></i>Test Categories</span>
+        <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addModal">
+            <i class="fas fa-plus me-1"></i>Add Category
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Search categories..." />
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr><th>#</th><th>Category Name</th><th>Description</th><th>Test Count</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Full Blood Count</td><td>Complete analysis of blood cell components</td><td>6</td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td></tr>
+                <tr><td>2</td><td>Differential Count</td><td>Breakdown of white blood cell types</td><td>4</td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td></tr>
+                <tr><td>3</td><td>Peripheral Blood Film</td><td>Microscopic examination of blood cells</td><td>3</td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td></tr>
+                <tr><td>4</td><td>Coagulation Studies</td><td>Tests for blood clotting disorders</td><td>5</td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td></tr>
+                <tr><td>5</td><td>Bone Marrow Analysis</td><td>Examination of bone marrow samples</td><td>4</td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#F5A800;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add Test Category</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Category Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter category name" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea class="form-control" rows="3" placeholder="Enter description"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-gold">Save Category</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,186 @@
+﻿@{
+    ViewData["Title"] = "Medication";
+    ViewData["Active"] = "Medication";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<div class="row g-4">
+    <!-- Categories -->
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header-red d-flex justify-content-between align-items-center" style="background:#6f42c1;">
+                <span><i class="fas fa-folder me-2"></i>Categories</span>
+                <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addMedCatModal">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center" style="background:#6f42c1;border-color:#6f42c1;">
+                        Antidiabetics
+                        <span class="badge bg-light text-dark">8</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        Antihypertensives
+                        <span class="badge" style="background:#6f42c1;color:white;">10</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        Antibiotics
+                        <span class="badge" style="background:#6f42c1;color:white;">12</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        Anticoagulants
+                        <span class="badge" style="background:#6f42c1;color:white;">6</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        Analgesics
+                        <span class="badge" style="background:#6f42c1;color:white;">4</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        Other
+                        <span class="badge" style="background:#6f42c1;color:white;">2</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medication List -->
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header-red d-flex justify-content-between align-items-center" style="background:#6f42c1;">
+                <span><i class="fas fa-pills me-2"></i>Medication — Antidiabetics</span>
+                <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addMedModal">
+                    <i class="fas fa-plus me-1"></i>Add Medication
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Search medication..." />
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead><tr><th>Medication Name</th><th>Dosage Form</th><th>Description</th><th>Patients</th><th>Actions</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>Metformin 500mg</td><td>Tablet</td><td>First-line type 2 diabetes treatment</td>
+                            <td><span class="badge bg-primary">18</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Metformin 850mg</td><td>Tablet</td><td>Higher dose metformin for type 2 diabetes</td>
+                            <td><span class="badge bg-primary">9</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Glibenclamide 5mg</td><td>Tablet</td><td>Sulfonylurea for type 2 diabetes</td>
+                            <td><span class="badge bg-primary">7</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Insulin Glargine</td><td>Injection</td><td>Long-acting insulin for type 1 and 2 diabetes</td>
+                            <td><span class="badge bg-primary">5</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Sitagliptin 100mg</td><td>Tablet</td><td>DPP-4 inhibitor for type 2 diabetes</td>
+                            <td><span class="badge bg-primary">4</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Empagliflozin 10mg</td><td>Tablet</td><td>SGLT2 inhibitor for type 2 diabetes</td>
+                            <td><span class="badge bg-primary">3</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Liraglutide 1.2mg</td><td>Injection</td><td>GLP-1 receptor agonist</td>
+                            <td><span class="badge bg-primary">2</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Pioglitazone 15mg</td><td>Tablet</td><td>Thiazolidinedione for type 2 diabetes</td>
+                            <td><span class="badge bg-primary">1</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Category Modal -->
+<div class="modal fade" id="addMedCatModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#6f42c1;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add Medication Category</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Category Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="e.g. Antifungals" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea class="form-control" rows="2" placeholder="Enter description..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn" style="background:#6f42c1;color:white;">Save Category</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Medication Modal -->
+<div class="modal fade" id="addMedModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#6f42c1;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add Medication</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Category <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                        <option selected>Antidiabetics</option>
+                        <option>Antihypertensives</option>
+                        <option>Antibiotics</option>
+                        <option>Anticoagulants</option>
+                        <option>Analgesics</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Medication Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="e.g. Metformin 500mg" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Dosage Form <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                        <option>Tablet</option>
+                        <option>Capsule</option>
+                        <option>Injection</option>
+                        <option>Syrup</option>
+                        <option>Inhaler</option>
+                        <option>Patch</option>
+                        <option>Cream</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea class="form-control" rows="2" placeholder="Enter description..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn" style="background:#6f42c1;color:white;">Save Medication</button>
+            </div>
+        </div>
+    </div>
+</div>

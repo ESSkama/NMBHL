@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "Track Test Requests";
+    ViewData["Active"] = "TrackRequests";
+    Layout = "~/Views/Doctor/_DoctorLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-blue">
+        <i class="fas fa-tasks me-2"></i>Track Test Requests
+    </div>
+    <div class="card-body">
+        <div class="row mb-3 g-2">
+            <div class="col-md-3"><input type="text" class="form-control" placeholder="Search by request # or patient..." /></div>
+            <div class="col-md-2">
+                <select class="form-select">
+                    <option>All Statuses</option>
+                    <option>Submitted</option>
+                    <option>Samples Received</option>
+                    <option>In Progress</option>
+                    <option>Completed</option>
+                    <option>Released</option>
+                    <option>Cancelled</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-select">
+                    <option>All Urgency</option>
+                    <option>STAT</option>
+                    <option>Urgent</option>
+                    <option>Routine</option>
+                </select>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead><tr><th>Request #</th><th>Patient</th><th>Date</th><th>Urgency</th><th>Tests</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>REQ-001</strong></td>
+                    <td>John Doe</td>
+                    <td>2026-04-30</td>
+                    <td><span class="badge bg-danger">STAT</span></td>
+                    <td>3</td>
+                    <td><span class="status-inprogress"><i class="fas fa-circle me-1" style="font-size:0.6rem;"></i>In Progress</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#detailModal"><i class="fas fa-eye"></i> Detail</button>
+                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-times"></i> Cancel</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-002</strong></td>
+                    <td>Mary Smith</td>
+                    <td>2026-04-29</td>
+                    <td><span class="badge bg-warning text-dark">Urgent</span></td>
+                    <td>2</td>
+                    <td><span class="status-completed"><i class="fas fa-circle me-1" style="font-size:0.6rem;"></i>Completed</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#detailModal"><i class="fas fa-eye"></i> Detail</button>
+                        <a href="/Doctor/Results" class="btn btn-sm btn-blue"><i class="fas fa-poll"></i> Results</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-003</strong></td>
+                    <td>Peter Jones</td>
+                    <td>2026-04-28</td>
+                    <td><span class="badge bg-secondary">Routine</span></td>
+                    <td>1</td>
+                    <td><span class="status-released"><i class="fas fa-circle me-1" style="font-size:0.6rem;"></i>Released by Doctor</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#detailModal"><i class="fas fa-eye"></i> Detail</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-004</strong></td>
+                    <td>Thandi Nkosi</td>
+                    <td>2026-04-27</td>
+                    <td><span class="badge bg-secondary">Routine</span></td>
+                    <td>2</td>
+                    <td><span class="status-submitted"><i class="fas fa-circle me-1" style="font-size:0.6rem;"></i>Submitted</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#detailModal"><i class="fas fa-eye"></i> Detail</button>
+                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-times"></i> Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#0d6efd;">
+                <h5 class="modal-title text-white"><i class="fas fa-file-medical me-2"></i>Request Detail — REQ-001</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4"><strong>Patient:</strong> John Doe</div>
+                    <div class="col-md-4"><strong>Date:</strong> 2026-04-30</div>
+                    <div class="col-md-4"><strong>Urgency:</strong> <span class="badge bg-danger">STAT</span></div>
+                    <div class="col-12"><strong>Clinical Notes:</strong> Patient presenting with fatigue and pallor. Suspected anaemia.</div>
+                </div>
+                <table class="table table-bordered table-sm">
+                    <thead><tr><th>Test Type</th><th>Category</th><th>Technician</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr><td>Haemoglobin</td><td>Full Blood Count</td><td>Thabo Mokoena</td><td><span class="status-completed">Completed</span></td></tr>
+                        <tr><td>Platelet Count</td><td>Full Blood Count</td><td>Thabo Mokoena</td><td><span class="status-inprogress">In Progress</span></td></tr>
+                        <tr><td>WBC Count</td><td>Differential Count</td><td>Not assigned</td><td><span class="status-submitted">Submitted</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

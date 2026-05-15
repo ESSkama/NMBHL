@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "View Results";
+    ViewData["Active"] = "Results";
+    Layout = "~/Views/Doctor/_DoctorLayout.cshtml";
+}
+
+<div class="card mb-3">
+    <div class="card-header-blue">
+        <i class="fas fa-poll me-2"></i>Patient Test Results
+    </div>
+    <div class="card-body">
+        <div class="row mb-3 g-2">
+            <div class="col-md-4">
+                <select class="form-select">
+                    <option>Select patient...</option>
+                    <option selected>John Doe</option>
+                    <option>Mary Smith</option>
+                    <option>Peter Jones</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option selected>REQ-001 — 2026-04-30</option>
+                    <option>REQ-005 — 2026-03-15</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-outline-secondary w-100"><i class="fas fa-file-pdf me-1"></i>Export PDF</button>
+            </div>
+        </div>
+
+        <div class="alert alert-warning py-2 mb-3" style="font-size:0.85rem;">
+            <i class="fas fa-exclamation-triangle me-1"></i>
+            <strong>2 abnormal results</strong> detected in this request — highlighted below.
+        </div>
+
+        <table class="table table-hover">
+            <thead><tr><th>Test Name</th><th>Category</th><th>Result</th><th>Unit</th><th>Normal Range</th><th>Status</th><th>Verified By</th></tr></thead>
+            <tbody>
+                <tr class="abnormal">
+                    <td><strong>Haemoglobin</strong></td>
+                    <td>Full Blood Count</td>
+                    <td><strong>7.2 ↓</strong></td>
+                    <td>g/dL</td>
+                    <td>12.0 – 17.5</td>
+                    <td><span class="badge bg-purple" style="background:#6f42c1;">Verified</span></td>
+                    <td>Lerato Nkosi</td>
+                </tr>
+                <tr>
+                    <td>Platelet Count</td>
+                    <td>Full Blood Count</td>
+                    <td>220</td>
+                    <td>x10³/µL</td>
+                    <td>150 – 400</td>
+                    <td><span class="badge bg-purple" style="background:#6f42c1;">Verified</span></td>
+                    <td>Lerato Nkosi</td>
+                </tr>
+                <tr class="abnormal">
+                    <td><strong>WBC Count</strong></td>
+                    <td>Differential Count</td>
+                    <td><strong>14.5 ↑</strong></td>
+                    <td>x10³/µL</td>
+                    <td>4.5 – 11.0</td>
+                    <td><span class="badge bg-purple" style="background:#6f42c1;">Verified</span></td>
+                    <td>Thabo Mokoena</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex gap-2 justify-content-end mt-3">
+            <button class="btn btn-outline-primary"><i class="fas fa-envelope me-1"></i>Email Results to Patient</button>
+            <button class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#releaseModal">
+                <i class="fas fa-check-circle me-1"></i>Release Results to Patient
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Release Modal -->
+<div class="modal fade" id="releaseModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#0d6efd;">
+                <h5 class="modal-title text-white"><i class="fas fa-check-circle me-2"></i>Release Results to Patient</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Message to Patient</label>
+                    <select class="form-select mb-2">
+                        <option>Send results via email</option>
+                        <option>Ask patient to make appointment to discuss results</option>
+                    </select>
+                    <textarea class="form-control" rows="4" placeholder="Add a personal note to the patient..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-blue"><i class="fas fa-paper-plane me-1"></i>Release & Notify Patient</button>
+            </div>
+        </div>
+    </div>
+</div>

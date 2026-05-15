@@ -1,0 +1,250 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 480px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .login-header {
+        background-color: #F5A800;
+        padding: 30px;
+        text-align: center;
+    }
+
+        .login-header h4 {
+            color: white;
+            font-weight: 700;
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        .login-header p {
+            color: rgba(255,255,255,0.85);
+            margin: 5px 0 0;
+            font-size: 0.85rem;
+        }
+
+    .login-body {
+        background: white;
+        padding: 35px;
+    }
+
+    .form-control:focus {
+        border-color: #F5A800;
+        box-shadow: 0 0 0 0.2rem rgba(245,168,0,0.2);
+    }
+
+    .btn-login {
+        background-color: #F5A800;
+        color: white;
+        width: 100%;
+        padding: 12px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+        .btn-login:hover {
+            background-color: #d4900a;
+            color: white;
+        }
+
+    .divider {
+        text-align: center;
+        position: relative;
+        margin: 25px 0 15px;
+    }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 12px;
+            color: #999;
+            font-size: 0.8rem;
+            position: relative;
+        }
+
+    .demo-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+        .demo-buttons .btn {
+            font-size: 0.78rem;
+            padding: 8px 5px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+    .btn-manager {
+        background-color: #1a1a2e;
+        color: white;
+        border: none;
+    }
+
+        .btn-manager:hover {
+            background-color: #0f3460;
+            color: white;
+        }
+
+    .btn-doctor {
+        background-color: #0d6efd;
+        color: white;
+        border: none;
+    }
+
+        .btn-doctor:hover {
+            background-color: #0b5ed7;
+            color: white;
+        }
+
+    .btn-technician {
+        background-color: #198754;
+        color: white;
+        border: none;
+    }
+
+        .btn-technician:hover {
+            background-color: #157347;
+            color: white;
+        }
+
+    .btn-patient {
+        background-color: #6f42c1;
+        color: white;
+        border: none;
+    }
+
+        .btn-patient:hover {
+            background-color: #5a35a8;
+            color: white;
+        }
+
+    .btn-admin {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        grid-column: span 2;
+    }
+
+        .btn-admin:hover {
+            background-color: #bb2d3b;
+            color: white;
+        }
+
+    .demo-label {
+        font-size: 0.72rem;
+        color: #999;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .input-group-text {
+        background: #f8f9fa;
+        border-right: none;
+        color: #F5A800;
+    }
+
+    .input-group .form-control {
+        border-left: none;
+    }
+</style>
+
+<div style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding: 20px;">
+    <div class="login-card">
+        <div class="login-header">
+            <img src="https://via.placeholder.com/50x50/ffffff/F5A800?text=NMB"
+                 style="border-radius:50%; margin-bottom:12px;" alt="logo" />
+            <h4>NMB-HLabSys</h4>
+            <p>Nelson Mandela Bay Haematology Laboratory</p>
+        </div>
+        <div class="login-body">
+            <div class="mb-3">
+                <label class="form-label fw-semibold" style="font-size:0.85rem;">Email Address</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                    <input type="email" class="form-control" placeholder="Enter your email" />
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="form-label fw-semibold" style="font-size:0.85rem;">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <input type="password" class="form-control" placeholder="Enter your password" id="passwordInput" />
+                    <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
+                        <i class="fas fa-eye" id="eyeIcon"></i>
+                    </button>
+                </div>
+            </div>
+            <button class="btn btn-login mb-3">
+                <i class="fas fa-sign-in-alt me-2"></i>Login
+            </button>
+            <div class="text-center mb-2">
+                <a href="#" style="font-size:0.85rem; color:#F5A800;">Forgot your password?</a>
+            </div>
+
+            <div class="divider"><span>DEMO ACCESS — SELECT USER ROLE</span></div>
+            <p class="demo-label">Click a role below to preview that user's dashboard</p>
+
+            <div class="demo-buttons">
+                <a href="/Manager" class="btn btn-manager">
+                    <i class="fas fa-user-tie me-1"></i> Lab Manager
+                </a>
+                <a href="/Doctor" class="btn btn-doctor">
+                    <i class="fas fa-user-md me-1"></i> Doctor
+                </a>
+                <a href="/Technician" class="btn btn-technician">
+                    <i class="fas fa-flask me-1"></i> Lab Technician
+                </a>
+                <a href="/Patient" class="btn btn-patient">
+                    <i class="fas fa-user me-1"></i> Patient
+                </a>
+                <a href="/Admin" class="btn btn-admin">
+                    <i class="fas fa-cog me-1"></i> Admin
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function togglePassword() {
+            const input = document.getElementById('passwordInput');
+            const icon = document.getElementById('eyeIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+    </script>
+}

@@ -1,0 +1,156 @@
+﻿@{
+    ViewData["Title"] = "Capture Results";
+    ViewData["Active"] = "CaptureResults";
+    Layout = "~/Views/Technician/_TechnicianLayout.cshtml";
+}
+
+<!-- Tests ready for result capture -->
+<div class="card mb-4">
+    <div class="card-header-green">
+        <i class="fas fa-keyboard me-2"></i>Tests Ready for Result Capture
+    </div>
+    <div class="card-body p-0">
+        <table class="table mb-0">
+            <thead><tr><th>Request #</th><th>Patient</th><th>Test</th><th>Started</th><th>Expected</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+                <tr class="overdue">
+                    <td><strong>REQ-001</strong></td><td>John Doe</td><td>Haemoglobin</td>
+                    <td>10:30</td><td><i class="fas fa-exclamation-triangle me-1"></i>OVERDUE</td>
+                    <td><span style="color:#fd7e14;font-weight:500;">In Progress</span></td>
+                    <td><button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#captureModal">Capture</button></td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-001</strong></td><td>John Doe</td><td>Platelet Count</td>
+                    <td>10:35</td><td>11:05</td>
+                    <td><span style="color:#fd7e14;font-weight:500;">In Progress</span></td>
+                    <td><button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#captureModal">Capture</button></td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-002</strong></td><td>Mary Smith</td><td>WBC Count</td>
+                    <td>11:00</td><td>11:45</td>
+                    <td><span style="color:#fd7e14;font-weight:500;">In Progress</span></td>
+                    <td><button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#captureModal">Capture</button></td>
+                </tr>
+                <tr style="background:#fff3e0;">
+                    <td><strong>REQ-006</strong></td><td>Sipho Dube</td><td>aPTT</td>
+                    <td>09:00</td><td>10:00</td>
+                    <td><span style="color:#fd7e14;font-weight:500;">To Be Reviewed</span></td>
+                    <td><button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#reviewModal">Review</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Capture Result Modal -->
+<div class="modal fade" id="captureModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#198754;">
+                <h5 class="modal-title text-white"><i class="fas fa-keyboard me-2"></i>Capture Test Result — Haemoglobin</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="fw-bold mb-2">Test Info</h6>
+                            <p class="mb-1"><strong>Patient:</strong> John Doe</p>
+                            <p class="mb-1"><strong>Request:</strong> REQ-001</p>
+                            <p class="mb-1"><strong>Normal Range:</strong> 12.0 – 17.5 g/dL</p>
+                            <p class="mb-0"><strong>Unit:</strong> g/dL</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="fw-bold mb-2">Patient Medical Info</h6>
+                            <p class="mb-1"><strong>Conditions:</strong> <span class="badge bg-warning text-dark">Diabetes</span> <span class="badge bg-info">Hypertension</span></p>
+                            <p class="mb-1"><strong>Allergies:</strong> <span class="badge bg-danger">Penicillin</span></p>
+                            <p class="mb-0"><strong>Doctor Notes:</strong> Suspected anaemia, patient fatigued</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Result Value <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Enter value" step="0.1" />
+                            <span class="input-group-text">g/dL</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Abnormal?</label>
+                        <select class="form-select">
+                            <option>Normal</option>
+                            <option>Abnormal — Low</option>
+                            <option>Abnormal — High</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Completion Date/Time</label>
+                        <input type="datetime-local" class="form-control" value="2026-04-30T14:05" />
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Notes</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter any relevant notes..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-green"><i class="fas fa-save me-1"></i>Save Result</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Review Modal (To Be Reviewed) -->
+<div class="modal fade" id="reviewModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#fd7e14;">
+                <h5 class="modal-title text-white"><i class="fas fa-redo me-2"></i>Review Result — aPTT</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning py-2 mb-3">
+                    <strong>Verification Note:</strong> "Result seems inconsistent with patient history. Please recheck sample."
+                    <br/><small class="text-muted">Returned by: Lerato Nkosi | 2026-04-30 09:45</small>
+                </div>
+
+                <h6 class="fw-semibold mb-2">Review History</h6>
+                <table class="table table-sm table-bordered mb-3">
+                    <thead><tr><th>Attempt</th><th>Result</th><th>Notes</th><th>Date</th><th>Action</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>42 seconds</td><td>Initial capture</td><td>2026-04-30 08:30</td><td><span class="badge bg-danger">Returned</span></td></tr>
+                    </tbody>
+                </table>
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Revised Result <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Enter revised value" value="42" />
+                            <span class="input-group-text">seconds</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Abnormal?</label>
+                        <select class="form-select">
+                            <option>Normal</option>
+                            <option selected>Abnormal — High</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Notes</label>
+                        <textarea class="form-control" rows="2" placeholder="Explain revision..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-green"><i class="fas fa-save me-1"></i>Resubmit for Verification</button>
+            </div>
+        </div>
+    </div>
+</div>

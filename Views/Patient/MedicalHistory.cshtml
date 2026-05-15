@@ -1,0 +1,162 @@
+﻿@{
+    ViewData["Title"] = "Medical History";
+    ViewData["Active"] = "MedicalHistory";
+    Layout = "~/Views/Patient/_PatientLayout.cshtml";
+}
+
+<div class="row g-4">
+    <!-- Chronic Conditions -->
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header-purple d-flex justify-content-between align-items-center">
+                <span><i class="fas fa-notes-medical me-2"></i>Chronic Conditions</span>
+                <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addConditionModal">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span><i class="fas fa-circle me-2" style="color:#6f42c1;font-size:0.5rem;"></i>Diabetes (Type 2)</span>
+                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span><i class="fas fa-circle me-2" style="color:#6f42c1;font-size:0.5rem;"></i>Hypertension</span>
+                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Allergies -->
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header-purple d-flex justify-content-between align-items-center">
+                <span><i class="fas fa-allergies me-2"></i>Allergies</span>
+                <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addAllergyModal">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span><span class="badge bg-danger me-2">!</span>Penicillin</span>
+                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    </li>
+                </ul>
+                <p class="text-muted mt-3 mb-0" style="font-size:0.8rem;">No other allergies recorded.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Current Medication -->
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header-purple d-flex justify-content-between align-items-center">
+                <span><i class="fas fa-pills me-2"></i>Current Medication</span>
+                <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addMedModal">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span><i class="fas fa-capsules me-2" style="color:#6f42c1;"></i>Metformin 500mg</span>
+                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        <span><i class="fas fa-capsules me-2" style="color:#6f42c1;"></i>Amlodipine 5mg</span>
+                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Condition Modal -->
+<div class="modal fade" id="addConditionModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#6f42c1;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add Chronic Condition</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <label class="form-label fw-semibold">Condition</label>
+                <select class="form-select">
+                    <option>Select condition...</option>
+                    <option>Asthma</option>
+                    <option>Diabetes (Type 1)</option>
+                    <option>Diabetes (Type 2)</option>
+                    <option>Hypertension</option>
+                    <option>Heart Disease</option>
+                    <option>Chronic Kidney Disease</option>
+                    <option>HIV/AIDS</option>
+                    <option>Tuberculosis</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-purple">Add Condition</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Allergy Modal -->
+<div class="modal fade" id="addAllergyModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#6f42c1;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add Allergy</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <label class="form-label fw-semibold">Allergy</label>
+                <select class="form-select">
+                    <option>Select allergy...</option>
+                    <option>Penicillin</option>
+                    <option>Aspirin</option>
+                    <option>Sulfa Drugs</option>
+                    <option>Latex</option>
+                    <option>Ibuprofen</option>
+                    <option>Codeine</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-purple">Add Allergy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Medication Modal -->
+<div class="modal fade" id="addMedModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#6f42c1;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add Medication</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <label class="form-label fw-semibold">Medication</label>
+                <select class="form-select">
+                    <option>Select medication...</option>
+                    <option>Metformin 500mg</option>
+                    <option>Amlodipine 5mg</option>
+                    <option>Atorvastatin 20mg</option>
+                    <option>Lisinopril 10mg</option>
+                    <option>Aspirin 75mg</option>
+                    <option>Omeprazole 20mg</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-purple">Add Medication</button>
+            </div>
+        </div>
+    </div>
+</div>

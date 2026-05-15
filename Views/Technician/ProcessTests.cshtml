@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Process Tests";
+    ViewData["Active"] = "ProcessTests";
+    Layout = "~/Views/Technician/_TechnicianLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-green">
+        <i class="fas fa-microscope me-2"></i>Select & Process Tests
+    </div>
+    <div class="card-body">
+        <div class="alert alert-info py-2 mb-3" style="font-size:0.85rem;">
+            <i class="fas fa-info-circle me-1"></i>
+            You will only see test types assigned to you by the Laboratory Manager.
+            Selecting a test will deduct consumables from stock automatically.
+        </div>
+
+        <div class="row mb-3 g-2">
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option>All Urgency</option>
+                    <option>STAT</option>
+                    <option>Urgent</option>
+                    <option>Routine</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option>All Categories</option>
+                    <option>Full Blood Count</option>
+                    <option>Differential Count</option>
+                    <option>Coagulation Studies</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Filter by request #..." />
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr><th>Request #</th><th>Patient</th><th>Test Type</th><th>Category</th><th>Urgency</th><th>Sample Received</th><th>Expected Completion</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>REQ-004</strong></td><td>Thandi Nkosi</td><td>Haemoglobin</td>
+                    <td>Full Blood Count</td><td><span class="badge bg-warning text-dark">Urgent</span></td>
+                    <td><span class="badge bg-success">Yes</span></td><td>+30 min after selection</td>
+                    <td>
+                        <button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#selectTestModal">
+                            <i class="fas fa-play me-1"></i>Select Test
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-004</strong></td><td>Thandi Nkosi</td><td>Platelet Count</td>
+                    <td>Full Blood Count</td><td><span class="badge bg-warning text-dark">Urgent</span></td>
+                    <td><span class="badge bg-success">Yes</span></td><td>+30 min after selection</td>
+                    <td>
+                        <button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#selectTestModal">
+                            <i class="fas fa-play me-1"></i>Select Test
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-008</strong></td><td>Sipho Dube</td><td>WBC Count</td>
+                    <td>Differential Count</td><td><span class="badge bg-secondary">Routine</span></td>
+                    <td><span class="badge bg-success">Yes</span></td><td>+45 min after selection</td>
+                    <td>
+                        <button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#selectTestModal">
+                            <i class="fas fa-play me-1"></i>Select Test
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-003</strong></td><td>Peter Jones</td><td>Blood Film Exam</td>
+                    <td>Peripheral Blood Film</td><td><span class="badge bg-secondary">Routine</span></td>
+                    <td><span class="badge bg-success">Yes</span></td><td>+90 min after selection</td>
+                    <td>
+                        <button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#selectTestModal">
+                            <i class="fas fa-play me-1"></i>Select Test
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Select Test Modal -->
+<div class="modal fade" id="selectTestModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#198754;">
+                <h5 class="modal-title text-white"><i class="fas fa-play me-2"></i>Select Test to Perform</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="p-3 bg-light rounded mb-3">
+                    <p class="mb-1"><strong>Test:</strong> Haemoglobin</p>
+                    <p class="mb-1"><strong>Patient:</strong> Thandi Nkosi</p>
+                    <p class="mb-1"><strong>Request:</strong> REQ-004</p>
+                    <p class="mb-0"><strong>Category:</strong> Full Blood Count</p>
+                </div>
+                <div class="p-3 bg-light rounded mb-3">
+                    <h6 class="fw-bold mb-2">Patient Medical Info</h6>
+                    <p class="mb-1"><strong>Conditions:</strong> <span class="badge bg-warning text-dark">Diabetes</span></p>
+                    <p class="mb-1"><strong>Allergies:</strong> None recorded</p>
+                    <p class="mb-0"><strong>Medication:</strong> Metformin 500mg</p>
+                </div>
+                <div class="alert alert-warning py-2" style="font-size:0.85rem;">
+                    <i class="fas fa-boxes me-1"></i>
+                    <strong>Consumables to be deducted:</strong> EDTA Tubes (×1), Reagent Kit (×1)
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-green"><i class="fas fa-play me-1"></i>Confirm & Start Test</button>
+            </div>
+        </div>
+    </div>
+</div>

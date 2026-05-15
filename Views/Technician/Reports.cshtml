@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Reports";
+    ViewData["Active"] = "Reports";
+    Layout = "~/Views/Technician/_TechnicianLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-green">
+        <i class="fas fa-chart-bar me-2"></i>Technician Reports
+    </div>
+    <div class="card-body">
+        <h6 class="fw-semibold mb-3">Generate Report</h6>
+        <div class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Report Type</label>
+                <select class="form-select">
+                    <option>Tests Completed by Me — By Category</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Date From</label>
+                <input type="date" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-semibold">Date To</label>
+                <input type="date" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-green w-100">
+                    <i class="fas fa-file-pdf me-2"></i>Generate PDF Report
+                </button>
+            </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <h6 class="fw-semibold mb-3">Preview — Thabo Mokoena | April 2026</h6>
+        <table class="table table-hover">
+            <thead><tr><th>Test Category</th><th>Tests Completed</th><th>Avg Turnaround</th><th>% On Time</th></tr></thead>
+            <tbody>
+                <tr><td>Full Blood Count</td><td>48</td><td>28 min</td><td><span class="badge bg-success">96%</span></td></tr>
+                <tr><td>Differential Count</td><td>22</td><td>42 min</td><td><span class="badge bg-success">91%</span></td></tr>
+                <tr><td>Coagulation Studies</td><td>15</td><td>58 min</td><td><span class="badge bg-warning text-dark">80%</span></td></tr>
+                <tr style="font-weight:600;"><td>Total</td><td>85</td><td>—</td><td>—</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

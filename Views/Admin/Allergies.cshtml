@@ -1,0 +1,159 @@
+﻿@{
+    ViewData["Title"] = "Allergies";
+    ViewData["Active"] = "Allergies";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<div class="row g-4">
+    <!-- Categories -->
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header-red d-flex justify-content-between align-items-center" style="background:#fd7e14;">
+                <span><i class="fas fa-folder me-2"></i>Categories</span>
+                <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addAllergyCatModal">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center" style="background:#fd7e14;border-color:#fd7e14;">
+                        Drug Allergies
+                        <span class="badge bg-light text-dark">8</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        Environmental
+                        <span class="badge bg-warning text-dark">5</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        Material
+                        <span class="badge bg-warning text-dark">5</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Allergies List -->
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header-red d-flex justify-content-between align-items-center" style="background:#fd7e14;">
+                <span><i class="fas fa-allergies me-2"></i>Allergies — Drug Allergies</span>
+                <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addAllergyModal">
+                    <i class="fas fa-plus me-1"></i>Add Allergy
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Search allergies..." />
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead><tr><th>Allergy Name</th><th>Description</th><th>Patients</th><th>Actions</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>Penicillin</td><td>Common antibiotic allergy</td>
+                            <td><span class="badge bg-primary">12</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Aspirin</td><td>NSAID allergy causing reactions</td>
+                            <td><span class="badge bg-primary">8</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Sulfa Drugs</td><td>Sulfonamide antibiotic allergy</td>
+                            <td><span class="badge bg-primary">6</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Ibuprofen</td><td>NSAID anti-inflammatory allergy</td>
+                            <td><span class="badge bg-primary">5</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Codeine</td><td>Opioid analgesic allergy</td>
+                            <td><span class="badge bg-primary">4</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Morphine</td><td>Opioid pain medication allergy</td>
+                            <td><span class="badge bg-primary">3</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Tetracycline</td><td>Broad-spectrum antibiotic allergy</td>
+                            <td><span class="badge bg-primary">2</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Warfarin</td><td>Blood thinner medication allergy</td>
+                            <td><span class="badge bg-primary">1</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Category Modal -->
+<div class="modal fade" id="addAllergyCatModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#fd7e14;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add Allergy Category</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Category Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="e.g. Food Allergies" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea class="form-control" rows="2" placeholder="Enter description..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn" style="background:#fd7e14;color:white;">Save Category</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Allergy Modal -->
+<div class="modal fade" id="addAllergyModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#fd7e14;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add Allergy</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Category <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                        <option selected>Drug Allergies</option>
+                        <option>Environmental</option>
+                        <option>Material</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Allergy Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter allergy name" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea class="form-control" rows="2" placeholder="Enter description..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn" style="background:#fd7e14;color:white;">Save Allergy</button>
+            </div>
+        </div>
+    </div>
+</div>

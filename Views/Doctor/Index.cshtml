@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["Active"] = "Dashboard";
+    Layout = "~/Views/Doctor/_DoctorLayout.cshtml";
+}
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="stat-card" style="background:linear-gradient(135deg,#0d6efd,#0b5ed7);">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <div style="font-size:0.8rem;opacity:0.85;">My Patients</div>
+                    <div style="font-size:2rem;font-weight:700;">34</div>
+                </div>
+                <i class="fas fa-users fa-2x" style="opacity:0.4;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card" style="background:linear-gradient(135deg,#fd7e14,#e06b00);">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <div style="font-size:0.8rem;opacity:0.85;">Pending Requests</div>
+                    <div style="font-size:2rem;font-weight:700;">7</div>
+                </div>
+                <i class="fas fa-hourglass-half fa-2x" style="opacity:0.4;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card" style="background:linear-gradient(135deg,#198754,#157347);">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <div style="font-size:0.8rem;opacity:0.85;">Results Ready</div>
+                    <div style="font-size:2rem;font-weight:700;">5</div>
+                </div>
+                <i class="fas fa-poll fa-2x" style="opacity:0.4;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card" style="background:linear-gradient(135deg,#dc3545,#bb2d3b);">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <div style="font-size:0.8rem;opacity:0.85;">Abnormal Alerts</div>
+                    <div style="font-size:2rem;font-weight:700;">3</div>
+                </div>
+                <i class="fas fa-exclamation-triangle fa-2x" style="opacity:0.4;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header-blue d-flex justify-content-between align-items-center">
+                <span><i class="fas fa-tasks me-2"></i>Recent Test Requests</span>
+                <a href="/Doctor/CreateRequest" class="btn btn-sm btn-light">+ New Request</a>
+            </div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead><tr><th>Request #</th><th>Patient</th><th>Date</th><th>Urgency</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr><td>REQ-001</td><td>John Doe</td><td>2026-04-30</td><td><span class="badge bg-danger">STAT</span></td><td><span class="status-inprogress">In Progress</span></td></tr>
+                        <tr><td>REQ-002</td><td>Mary Smith</td><td>2026-04-29</td><td><span class="badge bg-warning text-dark">Urgent</span></td><td><span class="status-completed">Completed</span></td></tr>
+                        <tr><td>REQ-003</td><td>Peter Jones</td><td>2026-04-28</td><td><span class="badge bg-secondary">Routine</span></td><td><span class="status-released">Released</span></td></tr>
+                        <tr><td>REQ-004</td><td>Thandi Nkosi</td><td>2026-04-27</td><td><span class="badge bg-secondary">Routine</span></td><td><span class="status-submitted">Submitted</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header-blue">
+                <i class="fas fa-bell me-2"></i>Abnormal Result Alerts
+            </div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead><tr><th>Patient</th><th>Test</th><th>Result</th></tr></thead>
+                    <tbody>
+                        <tr class="abnormal"><td>John Doe</td><td>Haemoglobin</td><td>7.2 g/dL ↓</td></tr>
+                        <tr class="abnormal"><td>Mary Smith</td><td>WBC Count</td><td>14.5 x10³/µL ↑</td></tr>
+                        <tr class="abnormal"><td>Thandi Nkosi</td><td>Platelet Count</td><td>89 x10³/µL ↓</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

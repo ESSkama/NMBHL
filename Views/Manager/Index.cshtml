@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["Active"] = "Dashboard";
+    Layout = "~/Views/Manager/_ManagerLayout.cshtml";
+}
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="stat-card" style="background:linear-gradient(135deg,#F5A800,#e09500);">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <div style="font-size:0.8rem;opacity:0.85;">Total Test Types</div>
+                    <div style="font-size:2rem;font-weight:700;">24</div>
+                </div>
+                <i class="fas fa-vials fa-2x" style="opacity:0.4;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card" style="background:linear-gradient(135deg,#0d6efd,#0b5ed7);">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <div style="font-size:0.8rem;opacity:0.85;">Registered Doctors</div>
+                    <div style="font-size:2rem;font-weight:700;">12</div>
+                </div>
+                <i class="fas fa-user-md fa-2x" style="opacity:0.4;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card" style="background:linear-gradient(135deg,#198754,#157347);">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <div style="font-size:0.8rem;opacity:0.85;">Lab Technicians</div>
+                    <div style="font-size:2rem;font-weight:700;">8</div>
+                </div>
+                <i class="fas fa-user-cog fa-2x" style="opacity:0.4;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card" style="background:linear-gradient(135deg,#dc3545,#bb2d3b);">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <div style="font-size:0.8rem;opacity:0.85;">Low Stock Alerts</div>
+                    <div style="font-size:2rem;font-weight:700;">3</div>
+                </div>
+                <i class="fas fa-exclamation-triangle fa-2x" style="opacity:0.4;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header-gold"><i class="fas fa-exclamation-triangle me-2"></i>Low Stock Consumables</div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead><tr><th>Consumable</th><th>On Hand</th><th>Reorder Level</th><th>Action</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>EDTA Tubes</td>
+                            <td><span class="badge bg-danger">18</span></td>
+                            <td>20</td>
+                            <td><a href="/Manager/Orders" class="btn btn-sm btn-gold">Order</a></td>
+                        </tr>
+                        <tr>
+                            <td>Microscope Slides</td>
+                            <td><span class="badge bg-warning text-dark">22</span></td>
+                            <td>25</td>
+                            <td><a href="/Manager/Orders" class="btn btn-sm btn-gold">Order</a></td>
+                        </tr>
+                        <tr>
+                            <td>Staining Reagent</td>
+                            <td><span class="badge bg-danger">5</span></td>
+                            <td>10</td>
+                            <td><a href="/Manager/Orders" class="btn btn-sm btn-gold">Order</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header-gold"><i class="fas fa-shopping-cart me-2"></i>Recent Orders</div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead><tr><th>Order #</th><th>Supplier</th><th>Date</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>ORD-001</td>
+                            <td>MedSupply SA</td>
+                            <td>2026-04-28</td>
+                            <td><span class="badge bg-success">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td>ORD-002</td>
+                            <td>LabCo</td>
+                            <td>2026-04-29</td>
+                            <td><span class="badge bg-warning text-dark">Partially Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td>ORD-003</td>
+                            <td>MedSupply SA</td>
+                            <td>2026-04-30</td>
+                            <td><span class="badge bg-primary">Ordered</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

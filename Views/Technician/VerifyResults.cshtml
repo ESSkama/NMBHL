@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Verify Results";
+    ViewData["Active"] = "VerifyResults";
+    Layout = "~/Views/Technician/_TechnicianLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-green">
+        <i class="fas fa-check-double me-2"></i>Results Awaiting Verification
+    </div>
+    <div class="card-body">
+        <div class="alert alert-info py-2 mb-3" style="font-size:0.85rem;">
+            <i class="fas fa-info-circle me-1"></i>
+            You can only verify test types assigned to you. You <strong>cannot</strong> verify your own results.
+        </div>
+        <table class="table table-hover">
+            <thead><tr><th>Request #</th><th>Patient</th><th>Test</th><th>Result</th><th>Normal Range</th><th>Performed By</th><th>Completed</th><th>Action</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>REQ-002</strong></td><td>Mary Smith</td><td>WBC Count</td>
+                    <td><strong class="text-danger">14.5 ↑</strong></td><td>4.5 – 11.0 x10³/µL</td>
+                    <td>Siyanda Khumalo</td><td>2026-04-30 11:45</td>
+                    <td><button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#verifyModal">Verify</button></td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-003</strong></td><td>Peter Jones</td><td>Platelet Count</td>
+                    <td>220</td><td>150 – 400 x10³/µL</td>
+                    <td>Siyanda Khumalo</td><td>2026-04-30 12:00</td>
+                    <td><button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#verifyModal">Verify</button></td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-005</strong></td><td>Sipho Dube</td><td>PT/INR</td>
+                    <td>1.8</td><td>0.8 – 1.2</td>
+                    <td>Lerato Nkosi</td><td>2026-04-30 13:00</td>
+                    <td><button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#verifyModal">Verify</button></td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-007</strong></td><td>Amahle Zulu</td><td>Haemoglobin</td>
+                    <td>11.8</td><td>12.0 – 17.5 g/dL</td>
+                    <td>Lerato Nkosi</td><td>2026-04-30 13:30</td>
+                    <td><button class="btn btn-sm btn-green" data-bs-toggle="modal" data-bs-target="#verifyModal">Verify</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Verify Modal -->
+<div class="modal fade" id="verifyModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#198754;">
+                <h5 class="modal-title text-white"><i class="fas fa-check-double me-2"></i>Verify Result — WBC Count</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="fw-bold mb-2">Result Details</h6>
+                            <p class="mb-1"><strong>Patient:</strong> Mary Smith</p>
+                            <p class="mb-1"><strong>Test:</strong> WBC Count</p>
+                            <p class="mb-1"><strong>Result:</strong> <span class="text-danger fw-bold">14.5 x10³/µL ↑</span></p>
+                            <p class="mb-1"><strong>Normal Range:</strong> 4.5 – 11.0 x10³/µL</p>
+                            <p class="mb-1"><strong>Performed By:</strong> Siyanda Khumalo</p>
+                            <p class="mb-0"><strong>Notes:</strong> Sample appeared slightly haemolysed</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="fw-bold mb-2">Patient Medical Info</h6>
+                            <p class="mb-1"><strong>Conditions:</strong> <span class="badge bg-warning text-dark">Asthma</span></p>
+                            <p class="mb-1"><strong>Allergies:</strong> None</p>
+                            <p class="mb-0"><strong>Medication:</strong> Salbutamol inhaler</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Verification Decision <span class="text-danger">*</span></label>
+                    <div class="d-flex gap-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="decision" id="accept" checked />
+                            <label class="form-check-label" for="accept">
+                                <span class="text-success fw-semibold">Accept & Verify</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="decision" id="reject" />
+                            <label class="form-check-label" for="reject">
+                                <span class="text-danger fw-semibold">Return for Review</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Verification Note</label>
+                    <textarea class="form-control" rows="3" placeholder="Add a note (required if returning for review)..."></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Verified By</label>
+                        <input type="text" class="form-control" value="Thabo Mokoena" readonly />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Verification Date/Time</label>
+                        <input type="datetime-local" class="form-control" value="2026-04-30T14:10" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-green"><i class="fas fa-check-double me-1"></i>Submit Verification</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+﻿@{
+    ViewData["Title"] = "Technician Dashboard";
+    ViewData["Active"] = "Dashboard";
+    Layout = "~/Views/Technician/_TechnicianLayout.cshtml";
+}
+
+<!-- Summary Stats -->
+<div class="row g-3 mb-4">
+    <div class="col-md-2">
+        <div class="stat-card" style="background:linear-gradient(135deg,#198754,#157347);">
+            <div style="font-size:0.75rem;opacity:0.85;">My Active Tests</div>
+            <div style="font-size:1.8rem;font-weight:700;">6</div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="stat-card" style="background:linear-gradient(135deg,#0d6efd,#0b5ed7);">
+            <div style="font-size:0.75rem;opacity:0.85;">Waiting Selection</div>
+            <div style="font-size:1.8rem;font-weight:700;">4</div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="stat-card" style="background:linear-gradient(135deg,#6f42c1,#5a35a8);">
+            <div style="font-size:0.75rem;opacity:0.85;">To Verify</div>
+            <div style="font-size:1.8rem;font-weight:700;">4</div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="stat-card" style="background:linear-gradient(135deg,#fd7e14,#e06b00);">
+            <div style="font-size:0.75rem;opacity:0.85;">To Review</div>
+            <div style="font-size:1.8rem;font-weight:700;">2</div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="stat-card" style="background:linear-gradient(135deg,#dc3545,#bb2d3b);">
+            <div style="font-size:0.75rem;opacity:0.85;">Overdue</div>
+            <div style="font-size:1.8rem;font-weight:700;">1</div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="stat-card" style="background:linear-gradient(135deg,#F5A800,#d4900a);">
+            <div style="font-size:0.75rem;opacity:0.85;">STAT Tests</div>
+            <div style="font-size:1.8rem;font-weight:700;">2</div>
+        </div>
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="card mb-3">
+    <div class="card-body py-2">
+        <div class="row g-2 align-items-center">
+            <div class="col-auto"><strong style="font-size:0.85rem;">Filter:</strong></div>
+            <div class="col-md-2">
+                <select class="form-select form-select-sm">
+                    <option>All Urgency</option>
+                    <option>STAT</option>
+                    <option>Urgent</option>
+                    <option>Routine</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-select form-select-sm">
+                    <option>All Categories</option>
+                    <option>Full Blood Count</option>
+                    <option>Differential Count</option>
+                    <option>Coagulation Studies</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-select form-select-sm">
+                    <option>All Due Times</option>
+                    <option>Overdue</option>
+                    <option>Due within 1hr</option>
+                    <option>Due today</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control form-select-sm" placeholder="Request #" />
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-sm btn-green">Apply</button>
+                <button class="btn btn-sm btn-outline-secondary ms-1">Reset</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- My Active Tests -->
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header-green d-flex justify-content-between align-items-center">
+                <span><i class="fas fa-microscope me-2"></i>My Active Tests</span>
+            </div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead><tr><th>Request #</th><th>Patient</th><th>Test</th><th>Urgency</th><th>Expected Completion</th><th>Status</th><th>Action</th></tr></thead>
+                    <tbody>
+                        <tr class="overdue">
+                            <td><strong>REQ-001</strong></td><td>John Doe</td><td>Haemoglobin</td>
+                            <td><span class="badge bg-danger">STAT</span></td>
+                            <td><i class="fas fa-exclamation-triangle me-1"></i>OVERDUE</td>
+                            <td><span style="color:#fd7e14;font-weight:500;">In Progress</span></td>
+                            <td><a href="/Technician/CaptureResults" class="btn btn-sm btn-green">Capture</a></td>
+                        </tr>
+                        <tr class="nearing">
+                            <td><strong>REQ-001</strong></td><td>John Doe</td><td>Platelet Count</td>
+                            <td><span class="badge bg-danger">STAT</span></td>
+                            <td>⚠ 14:30 (25 min)</td>
+                            <td><span style="color:#fd7e14;font-weight:500;">In Progress</span></td>
+                            <td><a href="/Technician/CaptureResults" class="btn btn-sm btn-green">Capture</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>REQ-002</strong></td><td>Mary Smith</td><td>WBC Count</td>
+                            <td><span class="badge bg-warning text-dark">Urgent</span></td>
+                            <td>15:00</td>
+                            <td><span style="color:#fd7e14;font-weight:500;">In Progress</span></td>
+                            <td><a href="/Technician/CaptureResults" class="btn btn-sm btn-green">Capture</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>REQ-005</strong></td><td>Sipho Dube</td><td>PT/INR</td>
+                            <td><span class="badge bg-secondary">Routine</span></td>
+                            <td>16:30</td>
+                            <td><span style="color:#fd7e14;font-weight:500;">In Progress</span></td>
+                            <td><a href="/Technician/CaptureResults" class="btn btn-sm btn-green">Capture</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="col-md-4">
+        <!-- Waiting to be Selected -->
+        <div class="card">
+            <div class="card-header-green" style="background:#0d6efd;">
+                <i class="fas fa-clock me-2"></i>Waiting to be Selected
+            </div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead><tr><th>Request #</th><th>Test</th><th>Urgency</th><th></th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>REQ-003</td><td>Blood Film</td>
+                            <td><span class="badge bg-secondary">Routine</span></td>
+                            <td><a href="/Technician/ProcessTests" class="btn btn-sm btn-outline-primary">Select</a></td>
+                        </tr>
+                        <tr>
+                            <td>REQ-004</td><td>Haemoglobin</td>
+                            <td><span class="badge bg-warning text-dark">Urgent</span></td>
+                            <td><a href="/Technician/ProcessTests" class="btn btn-sm btn-outline-primary">Select</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- To Be Reviewed -->
+        <div class="card">
+            <div class="card-header-green" style="background:#fd7e14;">
+                <i class="fas fa-redo me-2"></i>To Be Reviewed
+            </div>
+            <div class="card-body p-0">
+                <table class="table mb-0">
+                    <thead><tr><th>Request #</th><th>Test</th><th></th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>REQ-006</td><td>aPTT</td>
+                            <td><a href="/Technician/CaptureResults" class="btn btn-sm btn-outline-warning">Review</a></td>
+                        </tr>
+                        <tr>
+                            <td>REQ-007</td><td>WBC Count</td>
+                            <td><a href="/Technician/CaptureResults" class="btn btn-sm btn-outline-warning">Review</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

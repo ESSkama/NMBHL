@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Receive Samples";
+    ViewData["Active"] = "ReceiveSamples";
+    Layout = "~/Views/Technician/_TechnicianLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-green">
+        <i class="fas fa-vial me-2"></i>Receive Patient Samples
+    </div>
+    <div class="card-body">
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <label class="form-label fw-semibold">Search Request Number</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="e.g. REQ-001" />
+                    <button class="btn btn-green">Find</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Request found result -->
+        <div class="alert alert-success py-2 mb-3" style="font-size:0.85rem;">
+            <i class="fas fa-check-circle me-1"></i>
+            Request <strong>REQ-001</strong> found — Patient: <strong>John Doe</strong> | Urgency: <span class="badge bg-danger">STAT</span>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label fw-semibold">Technician Receiving <span class="text-danger">*</span></label>
+                <select class="form-select">
+                    <option selected>Thabo Mokoena (EMP-001)</option>
+                    <option>Lerato Nkosi (EMP-002)</option>
+                    <option>Siyanda Khumalo (EMP-003)</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-semibold">Date/Time Received <span class="text-danger">*</span></label>
+                <input type="datetime-local" class="form-control" value="2026-04-30T10:30" />
+            </div>
+        </div>
+
+        <hr class="my-4" />
+        <h6 class="fw-semibold mb-3">Verify Sample Barcodes</h6>
+
+        <table class="table table-bordered">
+            <thead><tr><th>Sample Type</th><th>Expected Barcode</th><th>Scanned Barcode</th><th>Match</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>Whole Blood (EDTA)</td>
+                    <td><code>BC-2026-0041</code></td>
+                    <td><input type="text" class="form-control form-control-sm" value="BC-2026-0041" /></td>
+                    <td><span class="badge bg-success"><i class="fas fa-check"></i> Match</span></td>
+                </tr>
+                <tr>
+                    <td>Plasma (Citrate)</td>
+                    <td><code>BC-2026-0042</code></td>
+                    <td><input type="text" class="form-control form-control-sm" placeholder="Scan barcode..." /></td>
+                    <td><span class="badge bg-secondary">Pending</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex gap-2 justify-content-end mt-3">
+            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-green">
+                <i class="fas fa-check-circle me-1"></i>Confirm Samples Received
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Pending Receipts Table -->
+<div class="card">
+    <div class="card-header-green">
+        <i class="fas fa-list me-2"></i>Pending Sample Receipts
+    </div>
+    <div class="card-body p-0">
+        <table class="table mb-0">
+            <thead><tr><th>Request #</th><th>Patient</th><th>Date Submitted</th><th>Urgency</th><th>Tests</th><th>Action</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>REQ-004</strong></td><td>Thandi Nkosi</td><td>2026-04-27</td>
+                    <td><span class="badge bg-secondary">Routine</span></td><td>2</td>
+                    <td><button class="btn btn-sm btn-green">Receive</button></td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-008</strong></td><td>Sipho Dube</td><td>2026-04-30</td>
+                    <td><span class="badge bg-warning text-dark">Urgent</span></td><td>3</td>
+                    <td><button class="btn btn-sm btn-green">Receive</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

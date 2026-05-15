@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Consumable Orders";
+    ViewData["Active"] = "Orders";
+    Layout = "~/Views/Manager/_ManagerLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-gold d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-shopping-cart me-2"></i>Consumable Orders</span>
+        <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addOrderModal">
+            <i class="fas fa-plus me-1"></i>Create Order
+        </button>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead><tr><th>Order #</th><th>Supplier</th><th>Date Ordered</th><th>Items</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>ORD-001</strong></td>
+                    <td>MedSupply SA</td>
+                    <td>2026-04-28</td>
+                    <td>3</td>
+                    <td><span class="badge bg-success">Complete</span></td>
+                    <td><button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i> View</button></td>
+                </tr>
+                <tr>
+                    <td><strong>ORD-002</strong></td>
+                    <td>LabCo</td>
+                    <td>2026-04-29</td>
+                    <td>2</td>
+                    <td><span class="badge bg-warning text-dark">Partially Complete</span></td>
+                    <td><button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i> View</button></td>
+                </tr>
+                <tr>
+                    <td><strong>ORD-003</strong></td>
+                    <td>MedSupply SA</td>
+                    <td>2026-04-30</td>
+                    <td>4</td>
+                    <td><span class="badge bg-primary">Ordered</span></td>
+                    <td><button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i> View</button></td>
+                </tr>
+                <tr>
+                    <td><strong>ORD-004</strong></td>
+                    <td>PathLab Supplies</td>
+                    <td>2026-04-25</td>
+                    <td>2</td>
+                    <td><span class="badge bg-danger">Cancelled</span></td>
+                    <td><button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i> View</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="addOrderModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#F5A800;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Create Consumable Order</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Order Number <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="ORD-005" readonly />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Supplier <span class="text-danger">*</span></label>
+                        <select class="form-select">
+                            <option>Select supplier...</option>
+                            <option>MedSupply SA</option>
+                            <option>LabCo</option>
+                            <option>PathLab Supplies</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Consumables to Order</label>
+                        <table class="table table-bordered table-sm">
+                            <thead><tr><th>Consumable</th><th>Current Stock</th><th>Qty to Order</th></tr></thead>
+                            <tbody>
+                                <tr><td>EDTA Tubes</td><td><span class="badge bg-danger">18</span></td><td><input type="number" class="form-control form-control-sm" placeholder="Qty" /></td></tr>
+                                <tr><td>Microscope Slides</td><td><span class="badge bg-warning text-dark">22</span></td><td><input type="number" class="form-control form-control-sm" placeholder="Qty" /></td></tr>
+                                <tr><td>Staining Reagent</td><td><span class="badge bg-danger">5</span></td><td><input type="number" class="form-control form-control-sm" placeholder="Qty" /></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-gold"><i class="fas fa-paper-plane me-1"></i>Place Order & Email Supplier</button>
+            </div>
+        </div>
+    </div>
+</div>

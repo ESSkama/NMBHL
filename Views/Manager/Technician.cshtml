@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Manage Technicians";
+    ViewData["Active"] = "Technicians";
+    Layout = "~/Views/Manager/_ManagerLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-gold d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-user-cog me-2"></i>Manage Lab Technicians</span>
+        <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addTechModal">
+            <i class="fas fa-plus me-1"></i>Add Technician
+        </button>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead><tr><th>Name</th><th>Surname</th><th>Employee #</th><th>Email</th><th>Assigned Test Types</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+                <tr><td>Thabo</td><td>Mokoena</td><td>EMP-001</td><td>t.mokoena@nmbhdl.co.za</td><td><span class="badge bg-primary">4 types</span></td><td><span class="badge bg-success">Active</span></td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-info me-1"><i class="fas fa-tasks"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-ban"></i></button></td></tr>
+                <tr><td>Lerato</td><td>Nkosi</td><td>EMP-002</td><td>l.nkosi@nmbhdl.co.za</td><td><span class="badge bg-primary">3 types</span></td><td><span class="badge bg-success">Active</span></td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-info me-1"><i class="fas fa-tasks"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-ban"></i></button></td></tr>
+                <tr><td>Siyanda</td><td>Khumalo</td><td>EMP-003</td><td>s.khumalo@nmbhdl.co.za</td><td><span class="badge bg-warning text-dark">1 type</span></td><td><span class="badge bg-success">Active</span></td><td><button class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-info me-1"><i class="fas fa-tasks"></i></button><button class="btn btn-sm btn-outline-danger"><i class="fas fa-ban"></i></button></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="addTechModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#F5A800;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add Lab Technician</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="First name" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Surname <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Last name" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">SA ID Number <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="13-digit ID number" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Employee Number <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="e.g. EMP-004" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" placeholder="Email address" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Contact Number</label>
+                        <input type="text" class="form-control" placeholder="e.g. 082 000 0000" />
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Assign Test Types <span class="text-danger">*</span></label>
+                        <select class="form-select" multiple style="height:100px;">
+                            <option>Haemoglobin</option>
+                            <option>Platelet Count</option>
+                            <option>WBC Count</option>
+                            <option>PT/INR</option>
+                            <option>Blood Film Exam</option>
+                        </select>
+                        <small class="text-muted">Hold Ctrl to select multiple. At least one required.</small>
+                    </div>
+                    <div class="col-12">
+                        <div class="alert alert-info py-2 mb-0" style="font-size:0.85rem;">
+                            <i class="fas fa-info-circle me-1"></i>
+                            A password will be auto-generated and emailed to the technician upon creation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-gold">Create Technician Account</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+﻿@{
+    ViewData["Title"] = "Doctor Access & Consent";
+    ViewData["Active"] = "Consent";
+    Layout = "~/Views/Patient/_PatientLayout.cshtml";
+}
+
+<div class="card mb-4">
+    <div class="card-header-purple d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-user-shield me-2"></i>Doctor Access & Consent</span>
+        <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#grantModal">
+            <i class="fas fa-plus me-1"></i>Grant Access
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-info py-2 mb-3" style="font-size:0.85rem;">
+            <i class="fas fa-info-circle me-1"></i>
+            Control which doctors can view your previous test results. You can grant or revoke access at any time.
+        </div>
+        <table class="table table-hover">
+            <thead><tr><th>Doctor</th><th>HPCSA #</th><th>Access Granted</th><th>Test Requests Shared</th><th>Actions</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><i class="fas fa-user-md me-2" style="color:#6f42c1;"></i>Dr. James Peterson</td>
+                    <td>MP0123456</td>
+                    <td>2026-03-01</td>
+                    <td>
+                        <span class="badge bg-purple" style="background:#6f42c1;">REQ-001</span>
+                        <span class="badge bg-purple ms-1" style="background:#6f42c1;">REQ-003</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#manageAccessModal">
+                            <i class="fas fa-edit"></i> Manage
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger">
+                            <i class="fas fa-ban"></i> Revoke
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-user-md me-2" style="color:#6f42c1;"></i>Dr. Amahle Dlamini</td>
+                    <td>MP0234567</td>
+                    <td>2026-04-10</td>
+                    <td>
+                        <span class="badge bg-purple" style="background:#6f42c1;">REQ-002</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#manageAccessModal">
+                            <i class="fas fa-edit"></i> Manage
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger">
+                            <i class="fas fa-ban"></i> Revoke
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Grant Access Modal -->
+<div class="modal fade" id="grantModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#6f42c1;">
+                <h5 class="modal-title text-white"><i class="fas fa-user-shield me-2"></i>Grant Doctor Access</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Select Doctor <span class="text-danger">*</span></label>
+                    <select class="form-select">
+                        <option>Select doctor...</option>
+                        <option>Dr. Pieter van Zyl (MP0345678)</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Select Test Requests to Share <span class="text-danger">*</span></label>
+                    <div class="border rounded p-3">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="req1" />
+                            <label class="form-check-label" for="req1">REQ-001 — 2026-04-30 (3 tests)</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="req2" />
+                            <label class="form-check-label" for="req2">REQ-002 — 2026-04-29 (2 tests)</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="req3" />
+                            <label class="form-check-label" for="req3">REQ-003 — 2026-04-10 (1 test)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="req4" />
+                            <label class="form-check-label" for="req4">REQ-004 — 2026-03-15 (2 tests)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-info py-2" style="font-size:0.85rem;">
+                    <i class="fas fa-envelope me-1"></i>
+                    The doctor will be notified via email once access is granted.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-purple"><i class="fas fa-check me-1"></i>Grant Access & Notify Doctor</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Manage Access Modal -->
+<div class="modal fade" id="manageAccessModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#6f42c1;">
+                <h5 class="modal-title text-white"><i class="fas fa-edit me-2"></i>Manage Access — Dr. James Peterson</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <label class="form-label fw-semibold">Shared Test Requests</label>
+                <div class="border rounded p-3">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" checked id="m1" />
+                        <label class="form-check-label" for="m1">REQ-001 — 2026-04-30</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="m2" />
+                        <label class="form-check-label" for="m2">REQ-002 — 2026-04-29</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" checked id="m3" />
+                        <label class="form-check-label" for="m3">REQ-003 — 2026-04-10</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-purple">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>

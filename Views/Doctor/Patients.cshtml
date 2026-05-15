@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "Patient Records";
+    ViewData["Active"] = "Patients";
+    Layout = "~/Views/Doctor/_DoctorLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-blue d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-users me-2"></i>Patient Records</span>
+        <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#addPatientModal">
+            <i class="fas fa-plus me-1"></i>Add New Patient
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Search by name or ID number..." />
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead><tr><th>Name</th><th>Surname</th><th>SA ID Number</th><th>Date of Birth</th><th>Cellphone</th><th>Conditions</th><th>Actions</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>8501015009087</td>
+                    <td>1985-01-01</td>
+                    <td>082 111 0001</td>
+                    <td><span class="badge bg-warning text-dark">Diabetes</span> <span class="badge bg-info">Hypertension</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#viewPatientModal"><i class="fas fa-eye"></i></button>
+                        <a href="/Doctor/CreateRequest" class="btn btn-sm btn-blue"><i class="fas fa-file-medical"></i> Request</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Smith</td>
+                    <td>9203025009081</td>
+                    <td>1992-03-02</td>
+                    <td>083 222 0002</td>
+                    <td><span class="badge bg-warning text-dark">Asthma</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#viewPatientModal"><i class="fas fa-eye"></i></button>
+                        <a href="/Doctor/CreateRequest" class="btn btn-sm btn-blue"><i class="fas fa-file-medical"></i> Request</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Peter</td>
+                    <td>Jones</td>
+                    <td>7806105009083</td>
+                    <td>1978-06-10</td>
+                    <td>084 333 0003</td>
+                    <td><span class="text-muted" style="font-size:0.8rem;">None recorded</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#viewPatientModal"><i class="fas fa-eye"></i></button>
+                        <a href="/Doctor/CreateRequest" class="btn btn-sm btn-blue"><i class="fas fa-file-medical"></i> Request</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- View Patient Modal -->
+<div class="modal fade" id="viewPatientModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#0d6efd;">
+                <h5 class="modal-title text-white"><i class="fas fa-user me-2"></i>Patient Profile — John Doe</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="fw-bold mb-2">Personal Details</h6>
+                            <p class="mb-1"><strong>Full Name:</strong> John Doe</p>
+                            <p class="mb-1"><strong>SA ID:</strong> 8501015009087</p>
+                            <p class="mb-1"><strong>Date of Birth:</strong> 1985-01-01</p>
+                            <p class="mb-1"><strong>Cellphone:</strong> 082 111 0001</p>
+                            <p class="mb-0"><strong>Email:</strong> john.doe@email.com</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="fw-bold mb-2">Medical History</h6>
+                            <p class="mb-1"><strong>Conditions:</strong> <span class="badge bg-warning text-dark">Diabetes</span> <span class="badge bg-info">Hypertension</span></p>
+                            <p class="mb-1"><strong>Allergies:</strong> <span class="badge bg-danger">Penicillin</span></p>
+                            <p class="mb-0"><strong>Medication:</strong> Metformin 500mg, Amlodipine 5mg</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="/Doctor/CreateRequest" class="btn btn-blue"><i class="fas fa-file-medical me-1"></i>Create Test Request</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Patient Modal -->
+<div class="modal fade" id="addPatientModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#0d6efd;">
+                <h5 class="modal-title text-white"><i class="fas fa-plus me-2"></i>Add New Patient</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="First name" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Surname <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Last name" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">SA ID Number <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="13-digit ID number" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Date of Birth <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Cellphone Number</label>
+                        <input type="text" class="form-control" placeholder="e.g. 082 000 0000" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" placeholder="Email (used as username)" />
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Known Medical Conditions</label>
+                        <input type="text" class="form-control" placeholder="e.g. Diabetes, Hypertension" />
+                    </div>
+                    <div class="col-12">
+                        <div class="alert alert-info py-2 mb-0" style="font-size:0.85rem;">
+                            <i class="fas fa-info-circle me-1"></i>
+                            A password will be auto-generated and emailed to the patient upon creation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-blue">Create Patient Account</button>
+            </div>
+        </div>
+    </div>
+</div>

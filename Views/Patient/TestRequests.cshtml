@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Test Requests & Results";
+    ViewData["Active"] = "TestRequests";
+    Layout = "~/Views/Patient/_PatientLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header-purple">
+        <i class="fas fa-file-medical me-2"></i>My Test Requests & Results
+    </div>
+    <div class="card-body">
+        <div class="row mb-3 g-2">
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option>All Statuses</option>
+                    <option>Submitted</option>
+                    <option>In Progress</option>
+                    <option>Results Available</option>
+                </select>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead><tr><th>Request #</th><th>Requested By</th><th>Date</th><th>Tests</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>REQ-001</strong></td><td>Dr. James Peterson</td><td>2026-04-30</td><td>3</td>
+                    <td><span class="status-inprogress"><i class="fas fa-circle me-1" style="font-size:0.6rem;"></i>In Progress</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#statusModal">
+                            <i class="fas fa-tasks"></i> Track
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-002</strong></td><td>Dr. James Peterson</td><td>2026-04-29</td><td>2</td>
+                    <td><span class="status-released"><i class="fas fa-circle me-1" style="font-size:0.6rem;"></i>Results Available</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-purple me-1" data-bs-toggle="modal" data-bs-target="#resultsModal">
+                            <i class="fas fa-poll"></i> View Results
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-003</strong></td><td>Dr. Amahle Dlamini</td><td>2026-04-10</td><td>1</td>
+                    <td><span class="status-released"><i class="fas fa-circle me-1" style="font-size:0.6rem;"></i>Results Available</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-purple me-1" data-bs-toggle="modal" data-bs-target="#resultsModal">
+                            <i class="fas fa-poll"></i> View Results
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>REQ-004</strong></td><td>Dr. James Peterson</td><td>2026-03-15</td><td>2</td>
+                    <td><span class="status-released"><i class="fas fa-circle me-1" style="font-size:0.6rem;"></i>Results Available</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-purple me-1" data-bs-toggle="modal" data-bs-target="#resultsModal">
+                            <i class="fas fa-poll"></i> View Results
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Track Status Modal -->
+<div class="modal fade" id="statusModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#6f42c1;">
+                <h5 class="modal-title text-white"><i class="fas fa-tasks me-2"></i>Request Status — REQ-001</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted mb-3">Doctor: Dr. James Peterson | Date: 2026-04-30</p>
+                <table class="table table-sm table-bordered">
+                    <thead><tr><th>Test</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr><td>Haemoglobin</td><td><span class="status-inprogress">In Progress</span></td></tr>
+                        <tr><td>Platelet Count</td><td><span class="status-inprogress">In Progress</span></td></tr>
+                        <tr><td>WBC Count</td><td><span class="status-submitted">Submitted</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Results Modal -->
+<div class="modal fade" id="resultsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#6f42c1;">
+                <h5 class="modal-title text-white"><i class="fas fa-poll me-2"></i>Test Results — REQ-002</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info py-2 mb-3" style="font-size:0.85rem;">
+                    <i class="fas fa-comment-medical me-1"></i>
+                    <strong>Doctor's Note:</strong> Please make an appointment to discuss your results.
+                </div>
+                <table class="table table-bordered">
+                    <thead><tr><th>Test</th><th>Result</th><th>Unit</th><th>Normal Range</th><th>Flag</th></tr></thead>
+                    <tbody>
+                        <tr class="abnormal">
+                            <td>Haemoglobin</td><td><strong>7.2</strong></td><td>g/dL</td><td>12.0 – 17.5</td>
+                            <td><span class="badge bg-danger">↓ LOW</span></td>
+                        </tr>
+                        <tr>
+                            <td>Platelet Count</td><td>220</td><td>x10³/µL</td><td>150 – 400</td>
+                            <td><span class="badge bg-success">Normal</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-purple"><i class="fas fa-file-pdf me-1"></i>Download PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
